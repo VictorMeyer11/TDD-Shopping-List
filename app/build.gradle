@@ -6,15 +6,16 @@ apply plugin: "androidx.navigation.safeargs.kotlin"
 apply plugin: 'dagger.hilt.android.plugin'
 
 android {
-    compileSdkVersion 29
+    compileSdkVersion 32
     buildToolsVersion "29.0.3"
 
     defaultConfig {
         applicationId "com.androiddevs.shoppinglisttestingyt"
         minSdkVersion 21
-        targetSdkVersion 29
+        targetSdkVersion 32
         versionCode 1
         versionName "1.0"
+        buildConfigField("String", "API_KEY", API_KEY)
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -56,6 +57,7 @@ dependencies {
 
     // Room
     implementation "androidx.room:room-runtime:2.2.5"
+    androidTestImplementation project(path: ':app')
     kapt "androidx.room:room-compiler:2.2.5"
 
     // Kotlin Extensions and Coroutines support for Room
