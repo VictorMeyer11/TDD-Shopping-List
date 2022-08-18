@@ -2,10 +2,13 @@ package com.androiddevs.tddshoppinglist.di
 
 import android.content.Context
 import androidx.room.Room
+import com.androiddevs.tddshoppinglist.data.local.ShoppingDao
 import com.androiddevs.tddshoppinglist.data.local.ShoppingItemDatabase
 import com.androiddevs.tddshoppinglist.data.remote.PixaBayApi
 import com.androiddevs.tddshoppinglist.other.Constants.BASE_URL
 import com.androiddevs.tddshoppinglist.other.Constants.DATABASE_NAME
+import com.androiddevs.tddshoppinglist.repository.ShoppingRepository
+import com.androiddevs.tddshoppinglist.repository.ShoppingRepositoryImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -28,6 +31,13 @@ object AppModule {
         ShoppingItemDatabase::class.java,
         DATABASE_NAME
     ).build()
+
+    @Singleton
+    @Provides
+    fun provideShoppingRepositoryImpl(
+        dao: ShoppingDao,
+        api: PixaBayApi
+    ) = ShoppingRepositoryImpl(dao, api) as ShoppingRepository
 
     @Singleton
     @Provides

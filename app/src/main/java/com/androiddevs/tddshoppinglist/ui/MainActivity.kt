@@ -1,7 +1,8 @@
-package com.androiddevs.tddshoppinglist
+package com.androiddevs.tddshoppinglist.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.androiddevs.tddshoppinglist.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
