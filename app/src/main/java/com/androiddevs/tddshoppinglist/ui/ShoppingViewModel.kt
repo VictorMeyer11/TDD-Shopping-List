@@ -40,7 +40,9 @@ class ShoppingViewModel @Inject constructor(
     }
 
     fun insertShoppingItem(name: String, amountString: String, priceString: String) {
-
+        if(name.isEmpty() || amountString.isEmpty() || priceString.isEmpty()) {
+            _insertShoppingItemStatus.postValue(Event(Resource.Error("The fields must not be empty", null)))
+        }
     }
 
     fun searchForImage(imageQuery: String) {
