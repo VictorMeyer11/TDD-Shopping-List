@@ -33,13 +33,13 @@ class ShoppingRepositoryImpl @Inject constructor(
             val response = pixaBayApi.searchForImage(imageQuery)
             if(response.isSuccessful) {
                 response.body()?.let {
-                    return@let Resource.Success(it)
-                } ?: Resource.Error("An unknwown error occurred")
+                    return@let Resource.success(it)
+                } ?: Resource.error("An unknwown error occurred", null)
             } else {
-                Resource.Error("An unknown error occurred")
+                Resource.error("An unknown error occurred", null)
             }
         } catch(e: Exception) {
-            Resource.Error("Couldn't reach server")
+            Resource.error("Couldn't reach server", null)
         }
     }
 }

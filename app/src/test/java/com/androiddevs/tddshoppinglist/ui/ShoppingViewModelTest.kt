@@ -1,18 +1,24 @@
 package com.androiddevs.tddshoppinglist.ui
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import com.androiddevs.tddshoppinglist.MainCoroutineRule
 import com.androiddevs.tddshoppinglist.getOrAwaitValue
 import com.androiddevs.tddshoppinglist.other.Constants
 import com.androiddevs.tddshoppinglist.other.Status
 import com.androiddevs.tddshoppinglist.repository.FakeShoppingRepository
 import com.google.common.truth.Truth.assertThat
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 
+@ExperimentalCoroutinesApi
 class ShoppingViewModelTest {
     @get:Rule
     var instantTaskExecutorRule = InstantTaskExecutorRule()
+
+    @get:Rule
+    var mainCoroutineRule = MainCoroutineRule()
 
     private lateinit var viewModel: ShoppingViewModel
 
